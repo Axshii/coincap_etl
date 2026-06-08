@@ -1,0 +1,16 @@
+# .dockerignore
+.env                # CRITICAL — never copy your API key into an image
+.git/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+data/               # DB file lives on the host, not in the image
+logs/
+analysis/
+tests/
+*.md
+.gitignore
+Dockerfile
+docker-compose.yml

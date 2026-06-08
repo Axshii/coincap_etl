@@ -1,0 +1,30 @@
+# ── Images ───────────────────────────────────────────────
+docker build -t coincap-etl .        # build image from Dockerfile
+docker images                        # list all images on your machine
+docker rmi coincap-etl               # delete an image
+
+# ── Containers ───────────────────────────────────────────
+docker ps                            # list running containers
+docker ps -a                         # list all containers (including stopped)
+docker stop <id>                     # stop a running container
+docker rm <id>                       # delete a stopped container
+
+# ── Debugging ────────────────────────────────────────────
+docker logs <id>                     # view container output
+docker logs -f <id>                  # follow logs live (like tail -f)
+
+# Open a shell INSIDE a running container
+docker exec -it <id> /bin/bash
+
+# Run a one-off command without starting the full pipeline
+docker run --rm -it coincap-etl /bin/bash
+
+# ── docker-compose ───────────────────────────────────────
+docker compose up --build            # rebuild and run
+docker compose up -d                 # run in background (detached)
+docker compose down                  # stop and remove containers
+docker compose logs -f               # follow live logs
+docker compose run --rm etl pytest   # run a one-off command
+
+# ── Clean up ─────────────────────────────────────────────
+docker system prune                  # remove all stopped containers + unused images
